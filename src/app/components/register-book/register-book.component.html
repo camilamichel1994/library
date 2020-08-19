@@ -1,0 +1,78 @@
+<div class="register-component">
+    <div class="search-wrapper" *ngIf="!id">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Pesquisar..." [(ngModel)]="searchTitle">
+            <div class="input-group-append">
+                <span class="input-group-text">
+                <fa-icon [icon]="faSearch" style=" color: black;"  (click)="search()"></fa-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="spinner-border text-primary loading" role="status" *ngIf="isLoading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    <div class="wrapper-component" *ngIf="isValid">
+       
+            <div class="wrapper-collumn">
+                <div class="img-book">
+                    <img class="img-book" [src]="urlLivro"/>
+                </div>
+            </div>   
+                
+            <div class="wrapper-collumn">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" class="form-control" id="titulo" [(ngModel)]="titulo">
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <input type="text" class="form-control" id="autor" [(ngModel)]="autor">
+                </div>
+                <div class="form-group">
+                    <label for="urlLivro"> URL da imagem da Capa do livro:</label>
+                    <input type="url" class="form-control" id="urlLivro" [(ngModel)]="urlLivro">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Status:</label>
+                </div>
+                <div class="wrapper-row">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"  [(ngModel)]="status" value="1" >
+                        <label class="form-check-label" for="inlineRadio1">
+                            LIDO
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [(ngModel)]="status" value="2" >
+                        <label class="form-check-label" for="inlineRadio2">
+                            QUERO LER
+                        </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"[(ngModel)]="status" value="3" >
+                        <label class="form-check-label" for="inlineRadio3">
+                                ABANDONEI
+                        </label>
+                        </div>
+                </div>
+                <div class="wrapper-button">
+                    <button type="button" class="btn" style=" background-color:#318fb5; color:white;" (click)="insert()">REGISTRAR</button>
+                </div>
+            </div>
+    </div>
+    <div class="result-search" *ngIf="!isValid" >
+        <div class="card  list-wrapper" *ngFor="let item of booksGoogle" >
+            <div class="">
+              <img [src]="item.volumeInfo.imageLinks.thumbnail"  width="128"/>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{item.volumeInfo.title}}</h5>
+              <p class="card-text">{{item.volumeInfo.authors[0]}}</p>
+              <button type="button" class="btn" style=" background-color:#318fb5; color:white;" (click)="getSuggestionBook(item)"> SUGESTÃO</button>
+            </div>
+          </div>
+    </div>
+    
+
+</div>

@@ -1,0 +1,30 @@
+
+.img-book{
+    max-width:128px;
+    height: 182px;
+    background-size: cover;
+    align-self: center;
+}
+.home-component{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.home-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 250px;
+    margin: 10px 10px 10px 0;
+}
+.buttons-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.button{
+    margin-right: 10px;
+}
+.statusStyle{
+    color: red;
+}

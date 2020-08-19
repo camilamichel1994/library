@@ -1,0 +1,16 @@
+<div class="home-component" >
+  <div class="card  home-wrapper" *ngFor="let item of listBook">
+    <div class="img-book">
+      <img [src]="item.cover"  width="128"/>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{item.title}}</h5>
+      <p class="card-text">{{item.author}}</p>
+      <p class="card-text" [ngClass]="{'statusStyle': item.status === '3'}">{{getStatusBook(item.status)}}</p>
+      <div class="buttons-wrapper">
+        <button type="button" class="btn button" style=" background-color:#318fb5; color:white;" (click)="removeBookList(item.id)">REMOVER</button>
+        <button type="button" class="btn" style=" background-color:#318fb5; color:white;" (click)="editBook(item.id)">EDITAR</button>
+      </div>
+    </div>
+  </div>
+</div>
